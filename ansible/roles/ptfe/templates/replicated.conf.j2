@@ -1,0 +1,11 @@
+{
+    "DaemonAuthenticationType":     "password",
+    "DaemonAuthenticationPassword": "{{ app_secret }}",
+    "TlsBootstrapType":             "server-path",
+    "TlsBootstrapHostname":         "{{ inventory_hostname }}",
+    "TlsBootstrapCert":             "/etc/letsencrypt/archive/{{ inventory_hostname }}/fullchain1.pem",
+    "TlsBootstrapKey":              "/etc/letsencrypt/archive/{{ inventory_hostname }}/privkey1.pem",
+    "BypassPreflightChecks":        true,
+    "ImportSettingsFrom":           "/home/ubuntu/application-settings.json",
+    "LicenseFileLocation":          "/home/ubuntu/license.rli"
+}
