@@ -34,4 +34,8 @@ The initial password to access the webfrontend can be found in ansible/roles/ptf
 Copy your license file into ansible/roles/ptfe/files (and ensure this file will be copied to the instance)
 Change the email address in ansible/role/create_cert/vars/main.yaml
 
+The final step after terraform apply:
+cd ansible
+ansible-playbook -i inventory playbook.yml
+
 Good luck ;-)
