@@ -1,7 +1,17 @@
 # pTFE-auto-install
 
+This repo creates a private Terraform Enterprise setup on AWS. 
+It is just for my own convenience but might help you as well.
 
-Terraform to install infrastructure:
+It uses Terraform (OSS) to create the necessary resources (on AWS).
+It uses Ansible for OS level configuration.
+
+Prerequisites:
+- a license file for TFE
+- your public ssh key is already uploaded to AWS within the right region
+- DNS domain under control of "Route53"
+
+Terraform creates the following resources:
 - VPC
 - Network
 - Routing
@@ -11,12 +21,7 @@ Terraform to install infrastructure:
 - SSH key access
 - inventory file for ansible
 
-The public ssh key is already uploaded to AWS within the correct region!
-
-To be fully agile you need to be able to address all this resources within AWS.
-My Route53 domain is: mydomain.xyz
-
-You need a proper license.rli file to be placed into ansible/roles/ptfe/files/license.rli 
+make your changes in variables.tf and terraform.tfvars
 
 Ansible to setup and configure pTFE
 - common role: prepares the server 
@@ -26,3 +31,7 @@ Ansible to setup and configure pTFE
 - ptfe role: provides /etc/replicated.conf and application-settings.json to be prepared to install Terraform
 
 The initial password to access the webfrontend can be found in ansible/roles/ptfe/vars/main.yml
+Copy your license file into ansible/roles/ptfe/files (and ensure this file will be copied to the instance)
+Change the email address in ansible/role/create_cert/vars/main.yaml
+
+Good luck ;-)
