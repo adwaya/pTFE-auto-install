@@ -3,8 +3,8 @@
     "DaemonAuthenticationPassword": "{{ app_secret }}",
     "TlsBootstrapType":             "server-path",
     "TlsBootstrapHostname":         "{{ inventory_hostname }}",
-    "TlsBootstrapCert":             "/etc/letsencrypt/archive/{{ inventory_hostname }}/fullchain1.pem",
-    "TlsBootstrapKey":              "/etc/letsencrypt/archive/{{ inventory_hostname }}/privkey1.pem",
+    "TlsBootstrapCert":             "/etc/letsencrypt/live/{{ inventory_hostname }}/fullchain.pem",
+    "TlsBootstrapKey":              "/etc/letsencrypt/live/{{ inventory_hostname }}/privkey.pem",
     "BypassPreflightChecks":        true,
     "ImportSettingsFrom":           "/home/ubuntu/application-settings.json",
     "LicenseFileLocation":          "/home/ubuntu/license.rli"
