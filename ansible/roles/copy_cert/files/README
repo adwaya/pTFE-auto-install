@@ -1,5 +1,0 @@
-the place to put your tar gz archive including the letsencrypt certs 
-# cd /etc ; tar xzf cert.tgz letsencrypt/*
-
-or just tweak the ansible playbook/role to fullfil your needs (other certs or whatever)
-
