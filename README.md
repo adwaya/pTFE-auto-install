@@ -39,3 +39,5 @@ cd ansible
 ansible-playbook -i inventory playbook.yml
 
 Good luck ;-)
+
+PS:  $ replicatedctl app-config export > settings.json 
