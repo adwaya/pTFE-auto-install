@@ -1,0 +1,11 @@
+---
+- name: Clone letsencrypt
+  git:
+    repo: 'https://github.com/letsencrypt/letsencrypt.git'
+    dest: /home/ubuntu/letsencrypt
+
+- name: Create Certificates with Letsencrypt
+  shell: ./letsencrypt-auto certonly --standalone --agree-tos -m {{ email }} -d {{ inventory_hostname }} -n
+  args:
+    chdir: /home/ubuntu/letsencrypt/
+

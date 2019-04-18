@@ -1,0 +1,8 @@
+---
+- name: Ensure certificates are copied to each hosts
+  include_tasks: certs_copy.yml
+  when: certs_creation == 'false'
+
+- name: Ensure certificates are created on each hosts
+  include_tasks: certs_create.yml
+  when: certs_creation == 'true'

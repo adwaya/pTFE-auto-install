@@ -8,27 +8,27 @@
     src: environment.sh
     dest: /etc/profile.d/environment.sh
 
-- name: Ensure hostname/dbus is installed
+- name: Ensure packages are installed
   apt:
-    name={{ item }}
-    state=present
-  with_items:
-    - hostname
-    - dbus
-    - ntp
+    name: "{{ all_packages }}"
+    state: present
+
+- name: Modify hosts file
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ hostvars[item].ansible_host }} {{ hostvars[item].inventory_hostname }} {{ hostvars[item].inventory_hostname_short }}"
+    state: present
+  with_items: "{{ groups.all }}"
 
 - name: Ensure hostname is set correctly
-  command: hostnamectl set-hostname {{ inventory_hostname }}
+  hostname:
+    name:  "{{ inventory_hostname }}"
 
-- name: Ensure correct timezone
-  command: timedatectl set-timezone Europe/Berlin
+- name: Ensure correct timezone is configured 
+  timezone: 
+    name: "{{ timezone }}"
 
-- name: Create /etc/hosts
-  lineinfile:
-    dest: /etc/hosts
-    line: "{{ hostvars[item].ansible_host }} {{ hostvars[item].inventory_hostname }} {{ hostvars[item].inventory_hostname_short }}"
-  state: present
-  with_items: "{{ groups.all }}"
+
 
 
 

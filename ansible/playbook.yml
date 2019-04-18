@@ -12,7 +12,6 @@
   become: yes
   gather_facts: yes
   roles:
-  - common
-  - create_cert
-    #  - copy_cert
-  - ptfe
+    - common
+    - certs_mgmt
+    - ptfe
